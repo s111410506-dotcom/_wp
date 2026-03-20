@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未來科技與生活調查表</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 20px; color: #333; }
+        .container { max-width: 700px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin: auto; }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        section { margin-bottom: 25px; padding: 15px; border: 1px solid #eee; border-radius: 8px; }
+        h3 { font-size: 1.1em; color: #34495e; margin-top: 0; }
+        .form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+        label { font-weight: bold; margin-bottom: 5px; font-size: 0.9em; }
+        input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="url"], input[type="number"], input[type="date"], input[type="time"], input[type="week"], input[type="month"], select, textarea {
+            padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1em;
+        }
+        .inline-group { flex-direction: row; align-items: center; gap: 10px; }
+        .radio-check-group { display: flex; gap: 15px; flex-wrap: wrap; padding: 5px 0; }
+        .btn-submit { background-color: #3498db; color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1em; width: 100%; transition: 0.3s; }
+        .btn-submit:hover { background-color: #2980b9; }
+        .hint { font-size: 0.8em; color: #7f8c8d; margin-top: 2px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🚀 未來科技與生活調查</h2>
+    <p>請填寫以下表單，體驗 HTML5 各種輸入類型的威力。</p>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+        
+        <section>
+            <h3>1. 基礎身份資訊</h3>
+            <div class="form-group">
+                <label>全名 (text):</label>
+                <input type="text" name="username" placeholder="請輸入姓名" required>
+            </div>
+            <div class="form-group">
+                <label>電子郵件 (email):</label>
+                <input type="email" name="email" placeholder="example@mail.com">
+            </div>
+            <div class="form-group">
+                <label>帳戶密碼 (password):</label>
+                <input type="password" name="password" placeholder="請輸入密碼">
+            </div>
+            <div class="form-group">
+                <label>聯絡電話 (tel):</label>
+                <input type="tel" name="phone" placeholder="0912-345-678">
+            </div>
+            <div class="form-group">
+                <label>個人部落格 (url):</label>
+                <input type="url" name="website" placeholder="https://example.com">
+            </div>
+            <div class="form-group">
+                <label>幸運數字 (number):</label>
+                <input type="number" name="luckynumber" min="0" max="999" value="7">
+            </div>
+        </section>
+
+        <section>
+            <h3>2. 偏好偏好設定</h3>
+            <div class="form-group">
+                <label>性別 (radio):</label>
+                <div class="radio-check-group">
+                    <label><input type="radio" name="gender" value="m"> 男</label>
+                    <label><input type="radio" name="gender" value="f"> 女</label>
+                    <label><input type="radio" name="gender" value="o"> 其他</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>感興趣的主題 (checkbox):</label>
+                <div class="radio-check-group">
+                    <label><input type="checkbox" name="interest" value="ai"> AI</label>
+                    <label><input type="checkbox" name="interest" value="crypto"> 加密貨幣</label>
+                    <label><input type="checkbox" name="interest" value="space"> 太空探索</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>對 AI 的樂觀程度 (range):</label>
+                <input type="range" name="optimism" min="0" max="100" value="50">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8em;">
+                    <span>擔憂</span><span>中立</span><span>期待</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>3. 排程與視覺</h3>
+            <div class="form-group">
+                <label>預約體驗日期 (date):</label>
+                <input type="date" name="book_date">
+            </div>
+            <div class="form-group">
+                <label>偏好聯絡時間 (time):</label>
+                <input type="time" name="book_time">
+            </div>
+            <div class="form-group">
+                <label>預計達成週數 (week):</label>
+                <input type="week" name="target_week">
+            </div>
+            <div class="form-group">
+                <label>偏好的系統配色 (color):</label>
+                <input type="color" name="theme_color" value="#3498db" style="width: 100px; height: 40px; border: none;">
+            </div>
+        </section>
+
+        <section>
+            <h3>4. 其他上傳</h3>
+            <div class="form-group">
+                <label>上傳身分證明 (file):</label>
+                <input type="file" name="attachment">
+            </div>
+            <div class="form-group">
+                <label>對未來世界的期許 (textarea):</label>
+                <textarea name="feedback" rows="4" placeholder="請分享您的看法..."></textarea>
+            </div>
+            <input type="hidden" name="user_token" value="ABC-123-XYZ">
+        </section>
+
+        <div style="display: flex; gap: 10px;">
+            <input type="reset" value="重設表單" style="padding: 10px; cursor: pointer;">
+            <button type="submit" class="btn-submit">傳送問卷</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
