@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; background: #f5f5f5; }
+        header { background: #333; color: #fff; padding: 1rem 2rem; }
+        header h1 { display: inline-block; }
+        header a { color: #fff; text-decoration: none; margin-left: 1rem; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .post { background: #fff; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .post h2 { margin-bottom: 0.5rem; }
+        .post h2 a { color: #333; text-decoration: none; }
+        .post h2 a:hover { color: #007bff; }
+        .post .meta { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+        .post .content { color: #444; }
+        .post .actions { margin-top: 1rem; }
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 0.9rem; }
+        .btn-primary { background: #007bff; color: #fff; }
+        .btn-danger { background: #dc3545; color: #fff; }
+        .btn-sm { padding: 0.25rem 0.5rem; font-size: 0.8rem; }
+        form { display: inline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <a href="/new" class="btn btn-primary">New Post</a>
+    </header>
+    <div class="container">
+        <% posts.forEach(post => { %>
+            <div class="post">
+                <h2><a href="/post/<%= post.id %>"><%= post.title %></a></h2>
+                <div class="meta"><%= post.created_at %></div>
+                <div class="content"><%= post.content.substring(0, 200) %><%= post.content.length > 200 ? '...' : '' %></div>
+                <div class="actions">
+                    <a href="/post/<%= post.id %>" class="btn btn-primary btn-sm">Read More</a>
+                    <a href="/edit/<%= post.id %>" class="btn btn-primary btn-sm">Edit</a>
+                    <form action="/delete" method="POST" onsubmit="return confirm('Delete this post?')">
+                        <input type="hidden" name="id" value="<%= post.id %>">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+        <% if (posts.length === 0) { %>
+            <div class="post">
+                <p>No posts yet. <a href="/new">Create your first post!</a></p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

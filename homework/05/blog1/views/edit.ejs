@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post - My Blog</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; background: #f5f5f5; }
+        header { background: #333; color: #fff; padding: 1rem 2rem; }
+        header h1 { display: inline-block; }
+        header a { color: #fff; text-decoration: none; margin-left: 1rem; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .form-container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        input[type="text"], textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; font-family: inherit; }
+        textarea { min-height: 300px; resize: vertical; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; text-decoration: none; }
+        .btn-primary { background: #007bff; color: #fff; }
+        .btn-secondary { background: #6c757d; color: #fff; }
+        .actions { display: flex; gap: 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="/" style="color: #fff; text-decoration: none;">My Blog</a></h1>
+        <a href="/">Back</a>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <h2>Edit Post</h2>
+            <form action="/update" method="POST">
+                <input type="hidden" name="id" value="<%= post.id %>">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" value="<%= post.title %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea id="content" name="content" required><%= post.content %></textarea>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="/" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

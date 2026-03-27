@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gogogo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #000; color: #fff; min-height: 100vh; }
+        a { color: inherit; text-decoration: none; }
+        
+        .app { display: flex; max-width: 1200px; margin: 0 auto; }
+        
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #2e2e2e;
+        }
+        
+        .logo { font-size: 28px; font-weight: 700; margin-bottom: 30px; padding: 10px; }
+        
+        .nav-links { flex: 1; }
+        .nav-link { display: flex; align-items: center; gap: 15px; padding: 15px; margin-bottom: 5px; border-radius: 30px; font-size: 18px; transition: background 0.2s; cursor: pointer; }
+        .nav-link:hover { background: #1a1a1a; }
+        .nav-link.active { background: #1a1a1a; font-weight: 600; }
+        .nav-link .icon { font-size: 24px; }
+        
+        .user-section { padding: 15px; border-top: 1px solid #2e2e2e; }
+        .user-card { display: flex; align-items: center; gap: 12px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+        .avatar.lg { width: 60px; height: 60px; font-size: 24px; }
+        .user-info .username { font-weight: 600; }
+        .user-info .handle { color: #888; font-size: 14px; }
+        .logout-btn { margin-left: auto; background: none; border: none; color: #888; cursor: pointer; padding: 5px 10px; border-radius: 20px; }
+        .logout-btn:hover { background: #1a1a1a; color: #fff; }
+        
+        .main { flex: 1; max-width: 600px; border-right: 1px solid #2e2e2e; min-height: 100vh; }
+        
+        .tabs { display: flex; border-bottom: 1px solid #2e2e2e; }
+        .tab { flex: 1; padding: 15px; text-align: center; font-weight: 600; color: #888; cursor: pointer; transition: all 0.2s; }
+        .tab:hover { background: #0a0a0a; }
+        .tab.active { color: #fff; border-bottom: 2px solid #fff; }
+        
+        .create-post { padding: 20px; border-bottom: 1px solid #2e2e2e; display: flex; gap: 15px; }
+        .create-post textarea { flex: 1; background: transparent; border: none; color: #fff; font-size: 16px; resize: none; outline: none; min-height: 60px; }
+        .create-post textarea::placeholder { color: #666; }
+        .create-post-actions { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; min-height: 60px; }
+        .privacy-toggle { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #888; }
+        .privacy-toggle input { accent-color: #833ab4; }
+        .post-btn { background: #fff; color: #000; border: none; padding: 8px 20px; border-radius: 20px; font-weight: 600; cursor: pointer; }
+        .post-btn:hover { opacity: 0.9; }
+        
+        .feed { padding: 0; }
+        .post { padding: 20px; border-bottom: 1px solid #2e2e2e; display: flex; gap: 15px; }
+        .post:hover { background: #0a0a0a; }
+        .post-content { flex: 1; }
+        .post-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .post-header .name { font-weight: 600; }
+        .post-header .time { color: #666; font-size: 14px; }
+        .post-text { font-size: 16px; line-height: 1.5; margin-bottom: 15px; white-space: pre-wrap; }
+        .post-actions { display: flex; gap: 20px; }
+        .post-action { color: #666; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 5px; }
+        .post-action:hover { color: #fff; }
+        .post-action.liked { color: #e91e63; }
+        .private-badge { background: #333; padding: 2px 8px; border-radius: 10px; font-size: 10px; color: #888; margin-left: 5px; }
+        
+        .right-sidebar { width: 350px; padding: 20px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+        .search-box { background: #1a1a1a; border: none; border-radius: 20px; padding: 12px 20px; width: 100%; color: #fff; font-size: 14px; outline: none; margin-bottom: 20px; }
+        .search-box::placeholder { color: #666; }
+        
+        .section-title { color: #888; font-size: 14px; font-weight: 600; margin-bottom: 15px; }
+        .suggested-user { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 10px; margin-bottom: 5px; }
+        .suggested-user:hover { background: #0a0a0a; }
+        .suggested-user .info { flex: 1; }
+        .suggested-user .info .name { font-weight: 600; font-size: 14px; }
+        .suggested-user .info .handle { color: #666; font-size: 12px; }
+        .follow-btn { background: #fff; color: #000; border: none; padding: 6px 16px; border-radius: 15px; font-size: 12px; font-weight: 600; cursor: pointer; }
+        .follow-btn:hover { opacity: 0.9; }
+        
+        .login-prompt { text-align: center; padding: 40px; }
+        .login-prompt h2 { margin-bottom: 10px; }
+        .login-prompt p { color: #888; margin-bottom: 20px; }
+        .auth-btns { display: flex; gap: 10px; justify-content: center; }
+        .auth-btn { padding: 10px 24px; border-radius: 20px; font-weight: 600; cursor: pointer; border: none; }
+        .auth-btn.primary { background: #fff; color: #000; }
+        .auth-btn.secondary { background: #1a1a1a; color: #fff; border: 1px solid #333; }
+        
+        .content-section { padding: 20px; }
+        .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .section-header h3 { font-size: 18px; }
+        
+        .empty-state { text-align: center; padding: 60px 20px; color: #666; }
+        .empty-state .icon { font-size: 48px; margin-bottom: 15px; }
+        
+        @media (max-width: 900px) {
+            .right-sidebar { display: none; }
+            .sidebar { width: 80px; }
+            .sidebar .nav-link span { display: none; }
+            .sidebar .logo { font-size: 24px; text-align: center; }
+            .sidebar .user-info { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">gogogo</div>
+            <nav class="nav-links">
+                <a href="/" class="nav-link active"><span class="icon">🏠</span><span>Home</span></a>
+                <a href="/explore" class="nav-link"><span class="icon">🔍</span><span>Explore</span></a>
+                <% if (user) { %>
+                    <a href="/profile/<%= user.id %>" class="nav-link"><span class="icon">👤</span><span>Profile</span></a>
+                <% } %>
+            </nav>
+            <div class="user-section">
+                <% if (user) { %>
+                    <div class="user-card">
+                        <div class="avatar"><%= user.username[0].toUpperCase() %></div>
+                        <div class="user-info">
+                            <div class="username"><%= user.username %></div>
+                            <div class="handle">@<%= user.username %></div>
+                        </div>
+                        <button class="logout-btn" onclick="location.href='/logout'">Logout</button>
+                    </div>
+                <% } else { %>
+                    <div class="auth-btns">
+                        <button class="auth-btn primary" onclick="location.href='/login'">Login</button>
+                        <button class="auth-btn secondary" onclick="location.href='/register'">Register</button>
+                    </div>
+                <% } %>
+            </div>
+        </aside>
+
+        <main class="main">
+            <% if (user) { %>
+                <div class="create-post">
+                    <div class="avatar"><%= user.username[0].toUpperCase() %></div>
+                    <form action="/create" method="POST" style="flex: 1; display: flex; flex-direction: column;">
+                        <textarea name="content" placeholder="What's happening?" required></textarea>
+                        <div class="create-post-actions">
+                            <label class="privacy-toggle">
+                                <input type="checkbox" name="is_public" value="1" checked>
+                                <span>Public post</span>
+                            </label>
+                            <button type="submit" class="post-btn">Post</button>
+                        </div>
+                    </form>
+                </div>
+            <% } %>
+
+            <div class="tabs">
+                <div class="tab active" onclick="showTab('foryou')">For you</div>
+                <div class="tab" onclick="showTab('following')">Following</div>
+                <% if (user) { %>
+                    <div class="tab" onclick="showTab('myposts')">My Posts</div>
+                <% } %>
+            </div>
+
+            <div id="foryou" class="feed">
+                <% if (publicPosts.length === 0) { %>
+                    <div class="empty-state">
+                        <div class="icon">📝</div>
+                        <p>No posts yet. Be the first to share!</p>
+                    </div>
+                <% } %>
+                <% publicPosts.forEach(post => { %>
+                    <div class="post">
+                        <a href="/profile/<%= post.user_id %>">
+                            <div class="avatar"><%= post.username[0].toUpperCase() %></div>
+                        </a>
+                        <div class="post-content">
+                            <div class="post-header">
+                                <a href="/profile/<%= post.user_id %>"><span class="name"><%= post.username %></span></a>
+                                <span class="time"><%= post.created_at %></span>
+                            </div>
+                            <div class="post-text"><%= post.content %></div>
+                            <div class="post-actions">
+                                <% if (user) { %>
+                                    <% if (post.isLiked) { %>
+                                        <form action="/unlike" method="POST" style="display: inline;">
+                                            <input type="hidden" name="post_id" value="<%= post.id %>">
+                                            <button type="submit" class="post-action liked" style="border: none; background: none; cursor: pointer;">❤️ <%= post.likes %></button>
+                                        </form>
+                                    <% } else { %>
+                                        <form action="/like" method="POST" style="display: inline;">
+                                            <input type="hidden" name="post_id" value="<%= post.id %>">
+                                            <button type="submit" class="post-action" style="border: none; background: none; cursor: pointer;">🤍 <%= post.likes %></button>
+                                        </form>
+                                    <% } %>
+                                <% } else { %>
+                                    <span class="post-action">❤️ <%= post.likes %></span>
+                                <% } %>
+                                <a href="/post/<%= post.id %>" class="post-action">💬 <%= post.commentsCount %></a>
+                                <span class="post-action">🔄</span>
+                                <span class="post-action">📤</span>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <div id="following" class="feed" style="display: none;">
+                <% if (!user) { %>
+                    <div class="login-prompt">
+                        <h2>Join the conversation</h2>
+                        <p>Follow people to see their posts here</p>
+                        <div class="auth-btns">
+                            <button class="auth-btn primary" onclick="location.href='/login'">Login</button>
+                            <button class="auth-btn secondary" onclick="location.href='/register'">Register</button>
+                        </div>
+                    </div>
+                <% } else if (followingPosts.length === 0) { %>
+                    <div class="empty-state">
+                        <div class="icon">👥</div>
+                        <p>Follow people to see their posts here</p>
+                        <a href="/explore" style="color: #833ab4;">Explore users to follow</a>
+                    </div>
+                <% } else { %>
+                    <% followingPosts.forEach(post => { %>
+                        <div class="post">
+                            <a href="/profile/<%= post.user_id %>">
+                                <div class="avatar"><%= post.username[0].toUpperCase() %></div>
+                            </a>
+                            <div class="post-content">
+                                <div class="post-header">
+                                    <a href="/profile/<%= post.user_id %>"><span class="name"><%= post.username %></span></a>
+                                    <span class="time"><%= post.created_at %></span>
+                                </div>
+                                <div class="post-text"><%= post.content %></div>
+                                <div class="post-actions">
+                                    <% if (post.isLiked) { %>
+                                        <form action="/unlike" method="POST" style="display: inline;">
+                                            <input type="hidden" name="post_id" value="<%= post.id %>">
+                                            <button type="submit" class="post-action liked" style="border: none; background: none; cursor: pointer;">❤️ <%= post.likes %></button>
+                                        </form>
+                                    <% } else { %>
+                                        <form action="/like" method="POST" style="display: inline;">
+                                            <input type="hidden" name="post_id" value="<%= post.id %>">
+                                            <button type="submit" class="post-action" style="border: none; background: none; cursor: pointer;">🤍 <%= post.likes %></button>
+                                        </form>
+                                    <% } %>
+                                    <a href="/post/<%= post.id %>" class="post-action">💬 <%= post.commentsCount %></a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+
+            <div id="myposts" class="feed" style="display: none;">
+                <% if (myPosts.length === 0) { %>
+                    <div class="empty-state">
+                        <div class="icon">✏️</div>
+                        <p>You haven't posted anything yet</p>
+                        <p style="margin-top: 10px;">Share something with the world!</p>
+                    </div>
+                <% } %>
+                <% myPosts.forEach(post => { %>
+                    <div class="post">
+                        <div class="avatar"><%= user.username[0].toUpperCase() %></div>
+                        <div class="post-content">
+                            <div class="post-header">
+                                <span class="name"><%= user.username %></span>
+                                <span class="time"><%= post.created_at %></span>
+                                <% if (!post.is_public) { %>
+                                    <span class="private-badge">🔒 Private</span>
+                                <% } %>
+                            </div>
+                            <div class="post-text"><%= post.content %></div>
+                            <div class="post-actions">
+                                <a href="/edit/<%= post.id %>" class="post-action">✏️ Edit</a>
+                                <form action="/delete" method="POST" style="display: inline;" onsubmit="return confirm('Delete this post?')">
+                                    <input type="hidden" name="id" value="<%= post.id %>">
+                                    <button type="submit" class="post-action" style="border: none; background: none; cursor: pointer;">🗑️ Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <input type="text" class="search-box" placeholder="Search">
+            <div class="section-title">Who to follow</div>
+            <% const usersToShow = typeof allUsers !== 'undefined' ? allUsers.filter(u => !user || u.id !== user.id).slice(0, 5) : []; %>
+            <% if (usersToShow.length > 0) { %>
+                <% usersToShow.forEach(u => { %>
+                    <a href="/profile/<%= u.id %>" class="suggested-user">
+                        <div class="avatar"><%= u.username[0].toUpperCase() %></div>
+                        <div class="info">
+                            <div class="name"><%= u.username %></div>
+                            <div class="handle">@<%= u.username %></div>
+                        </div>
+                    </a>
+                <% }) %>
+            <% } else { %>
+                <p style="color: #666; font-size: 14px;">Login to see suggestions</p>
+            <% } %>
+        </aside>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.feed').forEach(f => f.style.display = 'none');
+            event.target.classList.add('active');
+            document.getElementById(tabId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
