@@ -1,0 +1,12 @@
+/Users/tim/Desktop/tim/_wp/homework/midterm/rust-server/target/debug/deps/mime_guess-80be8cfbd10fc61a.d: /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/lib.rs /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/impl_bin_search.rs /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/mime_types.rs /Users/tim/Desktop/tim/_wp/homework/midterm/rust-server/target/debug/build/mime_guess-081f31a0b21373f0/out/mime_types_generated.rs
+
+/Users/tim/Desktop/tim/_wp/homework/midterm/rust-server/target/debug/deps/libmime_guess-80be8cfbd10fc61a.rlib: /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/lib.rs /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/impl_bin_search.rs /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/mime_types.rs /Users/tim/Desktop/tim/_wp/homework/midterm/rust-server/target/debug/build/mime_guess-081f31a0b21373f0/out/mime_types_generated.rs
+
+/Users/tim/Desktop/tim/_wp/homework/midterm/rust-server/target/debug/deps/libmime_guess-80be8cfbd10fc61a.rmeta: /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/lib.rs /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/impl_bin_search.rs /Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/mime_types.rs /Users/tim/Desktop/tim/_wp/homework/midterm/rust-server/target/debug/build/mime_guess-081f31a0b21373f0/out/mime_types_generated.rs
+
+/Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/lib.rs:
+/Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/impl_bin_search.rs:
+/Users/tim/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mime_guess-2.0.5/src/mime_types.rs:
+/Users/tim/Desktop/tim/_wp/homework/midterm/rust-server/target/debug/build/mime_guess-081f31a0b21373f0/out/mime_types_generated.rs:
+
+# env-dep:MIME_TYPES_GENERATED_PATH=/Users/tim/Desktop/tim/_wp/homework/midterm/rust-server/target/debug/build/mime_guess-081f31a0b21373f0/out/mime_types_generated.rs
