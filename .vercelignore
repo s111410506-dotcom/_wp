@@ -1,0 +1,8 @@
+.git
+.gitignore
+.DS_Store
+node_modules
+homework/midterm/rust-server/target
+homework/midterm/next-app/.next
+homework/midterm/next-app/node_modules
+homework/05/*/node_modules
