@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>期末作業 — Homework 總覽</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f4f6fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 2rem 0 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #2d5a87;
+      display: inline-block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e3a5f;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-complete {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .badge-partial {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge-placeholder {
+      background: #e5e7eb;
+      color: #6b7280;
+    }
+
+    .card .description {
+      font-size: 0.93rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .card .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .tech span {
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+
+    .card .folder {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .card .link {
+      font-size: 0.82rem;
+      color: #2d5a87;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card .link:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .header { padding: 2rem 1rem; }
+      .header h1 { font-size: 1.6rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📚 WP 課程作業總覽</h1>
+    <p>Web Programming — 國立金門大學 資訊工程學系</p>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">各週作業</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-header">
+          <h2>02 — HTML 問卷表單</h2>
+          <span class="badge badge-complete">完成</span>
+        </div>
+        <p class="description">一份「未來科技與生活調查表」靜態 HTML 表單，展示了 HTML5 各類輸入元件（文字、密碼、email、電話、URL、數字、單選、複選、範圍、日期、時間、週、顏色、檔案、文字區域、隱藏欄位），採用簡潔的卡片式佈局與藍色調設計。</p>
+        <div class="tech">
+          <span>HTML5</span>
+          <span>CSS</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">02/Questionnaire/</span>
+          <a class="link" href="../02/Questionnaire/">查看 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>03 — 個人主頁</h2>
+          <span class="badge badge-complete">完成</span>
+        </div>
+        <p class="description">使用 Tailwind CSS 建置的個人品牌頁面，介紹學生陳鈺婷（國立金門大學資工系）。包含個人頭像與簡介、技能欄位（程式語言、網頁開發、其他技術）以響應式三欄網格呈現，以及 Email/GitHub/LinkedIn 聯絡區塊與導覽列。</p>
+        <div class="tech">
+          <span>Tailwind CSS</span>
+          <span>Font Awesome</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">03/</span>
+          <a class="link" href="../03/about.html">查看 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>04 — JavaScript 10 練習</h2>
+          <span class="badge badge-complete">完成</span>
+        </div>
+        <p class="description">十題 JavaScript 入門練習：奇偶數判斷、FizzBuzz、乘法表、陣列加總與平均、成人過濾、水果庫存購買系統、JSON 序列化/反序列化、找最長單字、分數篩選（及格線 60）、數字反轉。涵蓋迴圈、條件式、陣列、物件、函式等基礎。</p>
+        <div class="tech">
+          <span>Node.js</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">04/</span>
+          <a class="link" href="../04/">查看 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>05 — 社群平台部落格</h2>
+          <span class="badge badge-complete">完成</span>
+        </div>
+        <p class="description">以 Express + EJS + SQLite 打造、具有 7 個迭代版本的 Threads 風格社群平台。功能包括：使用者註冊/登入/登出、貼文 CRUD、公開/私人權限、追蹤/取消追蹤、按讚（愛心）、留言、個人檔案統計、「為你推薦 / 正在追蹤 / 我的貼文」三欄時間軸。暗色主題，響應式佈局。預設測試帳號：admin / alice / bob。</p>
+        <div class="tech">
+          <span>Express</span>
+          <span>EJS</span>
+          <span>SQLite</span>
+          <span>Session</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">05/blog/</span>
+          <a class="link" href="../05/blog/">查看 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>06 — JS 概念筆記</h2>
+          <span class="badge badge-partial">部分完成</span>
+        </div>
+        <p class="description">十個 JavaScript 主題檔案，僅第 8 題有實際內容，說明了 JavaScript 中「傳參考 vs. 傳值」的行為差異：陣列透過 <code>.push()</code> 會改變原陣列，而重新賦值 <code>= [100]</code> 則不會影響外部變數。其餘檔案為空白佔位。</p>
+        <div class="tech">
+          <span>JavaScript</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">06/</span>
+          <a class="link" href="../06/">查看 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>07 — JS 進階練習</h2>
+          <span class="badge badge-partial">部分完成</span>
+        </div>
+        <p class="description">另一組十題 JavaScript 進階練習，僅第 8 題（三元運算子：依據使用者是否存在產生歡迎訊息）與第 10 題（Node.js 風格 error-first callback 權限檢查模式）有內容，其餘為空白。</p>
+        <div class="tech">
+          <span>JavaScript</span>
+          <span>Node.js</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">07/</span>
+          <a class="link" href="../07/">查看 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>08 — Rust Hello World</h2>
+          <span class="badge badge-placeholder">未開始</span>
+        </div>
+        <p class="description">一個空白的 Rust 原始碼檔案（<code>hello.rs</code>），尚未撰寫任何內容。預計應為 Rust 語言的 Hello World 入門程式。</p>
+        <div class="tech">
+          <span>Rust</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">08/</span>
+          <a class="link" href="../08/">查看 →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">期中專題</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-header">
+          <h2>期中 — 貪吃蛇遊戲</h2>
+          <span class="badge badge-complete">完成</span>
+        </div>
+        <p class="description">經典 Snake 遊戲 + 排行榜系統，前端使用 Canvas 繪圖、支援鍵盤 (WASD/方向鍵)、觸碰滑動與 D-pad 控制。後端分別以 <strong>Node.js (Express)</strong>、<strong>Python (FastAPI)</strong>、<strong>Rust (Axum)</strong>、<strong>Next.js</strong> 四種技術實作相同的 API，展現全端開發能力。深色霓虹主題，響應式手機支援。</p>
+        <div class="tech">
+          <span>Canvas</span>
+          <span>Express</span>
+          <span>FastAPI</span>
+          <span>Axum (Rust)</span>
+          <span>Next.js</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">midterm/</span>
+          <a class="link" href="../midterm/game/">查看 →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">期末專題</h2>
+    <div class="grid">
+
+      <div class="card" style="border: 2px dashed #cbd5e1;">
+        <div class="card-header">
+          <h2>期末 — 本作業說明網站</h2>
+          <span class="badge badge-placeholder">進行中</span>
+        </div>
+        <p class="description">此網站即為期末作業，彙整 homework 目錄下所有專案的說明文件，以視覺化卡片介面呈現各作業的內容、技術棧與狀態，方便瀏覽與導覽。</p>
+        <div class="tech">
+          <span>HTML</span>
+          <span>CSS</span>
+        </div>
+        <div class="card-meta">
+          <span class="folder">期末/</span>
+          <span style="font-size:0.82rem;color:#6b7280;">你正在這裡</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    國立金門大學 資訊工程學系 — Web Programming 課程作業
+  </div>
+</body>
+</html>
