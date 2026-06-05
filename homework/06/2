@@ -1,0 +1,6 @@
+(function() {
+  const count = 100;
+  console.log("Count is: " + count);
+})();
+
+// 驗證：console.log(count); // 會噴出 ReferenceError，因為 count 被封裝在作用域內
